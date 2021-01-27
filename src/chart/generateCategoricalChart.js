@@ -946,7 +946,7 @@ const generateCategoricalChart = ({
             y: layout === 'horizontal' ? validateChartY : tooltipTicks[activeTooltipIndex].coordinate,
           } : originCoordinate;
 
-          this.setState({ ...data, activeLabel, activeCoordinate, activePayload });
+          this.setState({ ...data, activeLabel, activeCoordinate, activePayload, activeTooltipIndex:activeTooltipIndex });
         } else {
           this.setState(data);
         }
