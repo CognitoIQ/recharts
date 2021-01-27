@@ -48,6 +48,7 @@ const generateCategoricalChart = ({
 
     static propTypes = {
       syncId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      syncMethod: PropTypes.string,
       compact: PropTypes.bool,
       width: PropTypes.number,
       height: PropTypes.number,
@@ -90,6 +91,7 @@ const generateCategoricalChart = ({
       barGap: 4,
       margin: { top: 5, right: 5, bottom: 5, left: 5 },
       reverseStackOrder: false,
+      syncMethod: 'index',
       ...defaultProps,
     };
 
@@ -904,7 +906,7 @@ const generateCategoricalChart = ({
     };
 
     handleReceiveSyncEvent = (cId, chartId, data) => {
-      const { syncId, layout } = this.props;
+      const { syncId, layout, syncMethod } = this.props;
       const { updateId } = this.state;
 
       if (syncId === cId && chartId !== this.uniqueChartId) {
@@ -919,9 +921,18 @@ const generateCategoricalChart = ({
             ),
           });
         } else if (!_.isNil(data.activeTooltipIndex)) {
-          const { chartX, chartY, activeTooltipIndex } = data;
+          const { chartX, chartY } = data;
+          let { activeTooltipIndex } = data;
           const { offset, tooltipTicks } = this.state;
           if (!offset) { return; }
+          if (syncMethod === 'value') {
+            // Set activeTooltipIndex to the index with the same value as data.activeLabel  
+            tooltipTicks.forEach(({ value }, index) => {
+              if (value === data.activeLabel) {
+                activeTooltipIndex = index;
+              }
+            });
+          }
           const viewBox = { ...offset, x: offset.left, y: offset.top };
           // When a categotical chart is combined with another chart, the value of chartX
           // and chartY may beyond the boundaries.
