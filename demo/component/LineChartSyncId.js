@@ -46,13 +46,10 @@ export default class Demo extends Component {
         <button type="button" onClick={this.setSyncMethodToValue}>
           switch sync Method between value and index
         </button>
-        <br />
         <p>
-Sync Method used:
+          Sync Method used:
           {syncMethod}
         </p>
-        <br />
-
         <p>A simple LineChart with syncId = test</p>
         <div className="line-chart-wrapper">
           <LineChart
@@ -75,7 +72,7 @@ Sync Method used:
           </LineChart>
         </div>
 
-        <p>A simple LineChart with customized line dot</p>
+        <p>A simple LineChart with syncId = test with axis labels in reverse order</p>
         <div className="line-chart-wrapper">
           <LineChart
             width={width}
