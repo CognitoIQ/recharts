@@ -1302,7 +1302,7 @@ export const generateCategoricalChart = ({
           }
           if (syncMethod === 'value') {
             // Set activeTooltipIndex to the index with the same value as data.activeLabel  
-            tooltipTicks.forEach(({ value }, index: number) => {
+            tooltipTicks.forEach(({ value }: TickItem, index: number) => {
               if (value === data.activeLabel) {
                 activeTooltipIndex = index;
               }
