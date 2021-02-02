@@ -708,7 +708,7 @@ export interface CategoricalChartState {
 
 export interface CategoricalChartProps {
   syncId?: number | string;
-  syncMethod?: string;
+  syncMethod?: string | Function;
   compact?: boolean;
   width?: number;
   height?: number;
@@ -1300,7 +1300,9 @@ export const generateCategoricalChart = ({
           if (!offset) {
             return;
           }
-          if (syncMethod === 'value') {
+          if (typeof syncMethod === 'function') {
+            activeTooltipIndex = syncMethod(activeTooltipIndex, data);
+          } else if (syncMethod === 'value') {
             // Set activeTooltipIndex to the index with the same value as data.activeLabel
             tooltipTicks.forEach(({ value }: TickItem, index: number) => {
               if (value === data.activeLabel) {

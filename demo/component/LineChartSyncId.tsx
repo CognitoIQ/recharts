@@ -28,15 +28,26 @@ const initialState = {
   syncMethod: '',
 };
 
+const syncMethodFunction = (index: number, data: any) => index + 1;
+
 export default class Demo extends Component<any, any> {
   static displayName = 'LineChartDemo Sync Method';
 
   state: any = initialState;
 
   setSyncMethodToValue = () => {
-    this.setState((prevState: { syncMethod: string }) => ({
-      syncMethod: prevState.syncMethod === 'value' ? 'index' : 'value',
-    }));
+    this.setState((prevState: { syncMethod: string }) => {
+      let method: any = 'index';
+      if (prevState.syncMethod === 'value') {
+        method = syncMethodFunction;
+      } else if (prevState.syncMethod === 'index') {
+        method =  'value';
+      }
+      return {
+        ...prevState,
+        syncMethod: method,
+      }
+    });
   };
 
   render() {
@@ -48,7 +59,7 @@ export default class Demo extends Component<any, any> {
         </button>
         <p>
           Sync Method used:
-          {syncMethod}
+          {syncMethod === 'value' || syncMethod ==='index' ? syncMethod: 'callback function'}
         </p>
         <p>A simple LineChart with syncId = test</p>
         <div className="line-chart-wrapper">
