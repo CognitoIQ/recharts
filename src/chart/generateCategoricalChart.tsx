@@ -708,7 +708,7 @@ export interface CategoricalChartState {
 
 export interface CategoricalChartProps {
   syncId?: number | string;
-  syncMethod?: string | Function;
+  syncMethod?: 'index' | 'value' | Function;
   compact?: boolean;
   width?: number;
   height?: number;
