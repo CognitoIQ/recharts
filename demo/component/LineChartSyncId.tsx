@@ -41,12 +41,12 @@ export default class Demo extends Component<any, any> {
       if (prevState.syncMethod === 'value') {
         method = syncMethodFunction;
       } else if (prevState.syncMethod === 'index') {
-        method =  'value';
+        method = 'value';
       }
       return {
         ...prevState,
         syncMethod: method,
-      }
+      };
     });
   };
 
@@ -59,7 +59,7 @@ export default class Demo extends Component<any, any> {
         </button>
         <p>
           Sync Method used:
-          {syncMethod === 'value' || syncMethod ==='index' ? syncMethod: 'callback function'}
+          {syncMethod === 'value' || syncMethod === 'index' ? syncMethod : 'callback function'}
         </p>
         <p>A simple LineChart with syncId = test</p>
         <div className="line-chart-wrapper">
