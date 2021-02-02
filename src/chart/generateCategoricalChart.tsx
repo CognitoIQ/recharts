@@ -708,7 +708,7 @@ export interface CategoricalChartState {
 
 export interface CategoricalChartProps {
   syncId?: number | string;
-  syncMethod?: string,
+  syncMethod?: string;
   compact?: boolean;
   width?: number;
   height?: number;
@@ -1301,7 +1301,7 @@ export const generateCategoricalChart = ({
             return;
           }
           if (syncMethod === 'value') {
-            // Set activeTooltipIndex to the index with the same value as data.activeLabel  
+            // Set activeTooltipIndex to the index with the same value as data.activeLabel
             tooltipTicks.forEach(({ value }: TickItem, index: number) => {
               if (value === data.activeLabel) {
                 activeTooltipIndex = index;
@@ -1322,7 +1322,13 @@ export const generateCategoricalChart = ({
               }
             : originCoordinate;
 
-          this.setState({ ...data, activeLabel, activeCoordinate, activePayload, activeTooltipIndex:activeTooltipIndex });
+          this.setState({
+            ...data,
+            activeLabel,
+            activeCoordinate,
+            activePayload,
+            activeTooltipIndex,
+          });
         } else {
           this.setState(data);
         }
