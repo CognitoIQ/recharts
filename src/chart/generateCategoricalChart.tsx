@@ -1301,6 +1301,7 @@ export const generateCategoricalChart = ({
             return;
           }
           if (typeof syncMethod === 'function') {
+            // Call a callback function. If there is an application specific algorithm
             activeTooltipIndex = syncMethod(activeTooltipIndex, data);
           } else if (syncMethod === 'value') {
             // Set activeTooltipIndex to the index with the same value as data.activeLabel
