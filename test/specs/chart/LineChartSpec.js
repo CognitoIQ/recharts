@@ -600,9 +600,6 @@ describe('<LineChart /> - Rendering two line charts with syncId', () => {
     // simulate leaving the area
     wrapper.find(LineChart).at(0).simulate('mouseLeave');
 
-    await runAllPromises();
-    wrapper.update();
-
     expect(wrapper.find('.recharts-tooltip-cursor').hostNodes.length).to.equal(0);
   });
 
@@ -666,9 +663,6 @@ describe('<LineChart /> - Rendering two line charts with syncId', () => {
 
     // simulate leaving the area
     wrapper.find(LineChart).at(0).simulate('mouseLeave');
-
-    await runAllPromises();
-    wrapper.update();
 
     expect(wrapper.find('.recharts-tooltip-cursor').hostNodes.length).to.equal(0);
   });
@@ -749,9 +743,6 @@ describe('<LineChart /> - Rendering two line charts with syncId', () => {
 
     // simulate leaving the area
     wrapper.find(LineChart).at(0).simulate('mouseLeave');
-
-    await runAllPromises();
-    wrapper.update();
 
     expect(wrapper.find('.recharts-tooltip-cursor').hostNodes.length).to.equal(0);
   });
