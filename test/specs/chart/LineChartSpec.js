@@ -717,5 +717,7 @@ describe("<LineChart /> - Rendering two line charts with syncId", () => {
     // simulate leaving the area
     wrapper.find(LineChart).at(0).simulate("mouseLeave");
     expect(wrapper.find(".recharts-tooltip-cursor").hostNodes.length).to.equal(0);
+
+    console.log("Finish thred test");
   });
 });
